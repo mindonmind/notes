@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Zetian Yang's Tech Notes!
-====================================
+Welcome to  MindonTech Notes!
+===============================
 
 *Attention* : all notes are keeping updating, some of them are ugly just because I haven't finished them.
 
