@@ -1,0 +1,241 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Zsh 快捷键绑定 (keybinding) &mdash; Zetian Yang&#39;s Tech Notes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Zetian Yang&#39;s Tech Notes 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="Vim" href="../vim.html" />
+    <link rel="prev" title="使用 zsh" href="zsh_begin.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../vim.html" title="Vim"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="zsh_begin.html" title="使用 zsh"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="zsh-keybinding">
+<h1>Zsh 快捷键绑定 (keybinding)<a class="headerlink" href="#zsh-keybinding" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>查看当前绑定<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>使用 <tt class="docutils literal"><span class="pre">bindkey</span></tt> 命令即可</p>
+<div class="highlight-python"><pre>$ bindkey</pre>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>快捷键<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="53%" />
+<col width="47%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">功能</th>
+<th class="head">快捷键</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>向前移动</td>
+<td>ctrl-f/right</td>
+</tr>
+<tr class="row-odd"><td>向后移动</td>
+<td>ctrl-b/left</td>
+</tr>
+<tr class="row-even"><td>按单词向前移动</td>
+<td>esc-f/ctrl-right</td>
+</tr>
+<tr class="row-odd"><td>按单词向后移动</td>
+<td>esc-b/ctrl-left</td>
+</tr>
+<tr class="row-even"><td>删除上一个单词</td>
+<td>ctrl-w</td>
+</tr>
+<tr class="row-odd"><td>清屏</td>
+<td>ctrl-l</td>
+</tr>
+<tr class="row-even"><td>撤销</td>
+<td>ctrl-_/ctrl-/</td>
+</tr>
+<tr class="row-odd"><td>上一行最后一个参数</td>
+<td>esc-./!$</td>
+</tr>
+<tr class="row-even"><td>将本行加引号</td>
+<td>alt-&#8216;</td>
+</tr>
+<tr class="row-odd"><td>查询命令</td>
+<td>alt-shift-?</td>
+</tr>
+<tr class="row-even"><td>剪切光标前内容</td>
+<td>ctrl-u</td>
+</tr>
+<tr class="row-odd"><td>剪切光标后内容</td>
+<td>ctrl-k</td>
+</tr>
+<tr class="row-even"><td>粘贴剪切的内容</td>
+<td>ctrl-y</td>
+</tr>
+<tr class="row-odd"><td>反向搜索</td>
+<td>ctrl-r</td>
+</tr>
+<tr class="row-even"><td>正向搜索</td>
+<td>ctrl-s</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>快捷键设置<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h3>设置文件位置<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>绑定的设置可以写入 <tt class="docutils literal"><span class="pre">.zshrc</span></tt> 文件中。如果使用 <tt class="docutils literal"><span class="pre">oh-my-zsh</span></tt> ，配置还可以写入 <tt class="docutils literal"><span class="pre">~/.oh-my-zsh/lib/key-bindings.zsh</span></tt> 中。</p>
+</div>
+<div class="section" id="id5">
+<h3>转换序列<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>在使用 <tt class="docutils literal"><span class="pre">bindkey</span></tt> 命令时，一帮第一个参数使用对应快捷键的 <a class="reference external" href="http://en.wikipedia.org/wiki/ANSI_escape_code">CSI 序列</a> ，如果想知道某种快捷组合键的 CSI 序列，可以有如下两种方法:</p>
+<ol class="arabic simple">
+<li>先按 <tt class="docutils literal"><span class="pre">Ctrl-V</span></tt> 然后再按组合键，如 <tt class="docutils literal"><span class="pre">Ctrl-A</span></tt></li>
+<li>输入 <tt class="docutils literal"><span class="pre">cat</span> <span class="pre">&gt;</span> <span class="pre">/dev/null</span></tt> ，之后输入组合键</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h3>设置命令<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><pre># 前后移动一个单词
+bindkey '^[^[[C' emacs-forward-word  # Alt-Right
+bindkey '^[^[[D' emacs-backward-word # Alt-Left
+# or
+bindkey '^[Oc' emacs-forward-word    # Ctrl-Right
+bindkey '^[Od' emacs-backward-word   # Ctrl-Left</pre>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>参考<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://grml.org/zsh-pony">zsh pony</a></li>
+<li><a class="reference external" href="http://zshwiki.org/home/zle/bindkeys">zsh wiki</a></li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/ANSI_escape_code">CSI 转换序列</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Zsh 快捷键绑定 (keybinding)</a><ul>
+<li><a class="reference internal" href="#id1">查看当前绑定</a></li>
+<li><a class="reference internal" href="#id2">快捷键</a></li>
+<li><a class="reference internal" href="#id3">快捷键设置</a><ul>
+<li><a class="reference internal" href="#id4">设置文件位置</a></li>
+<li><a class="reference internal" href="#id5">转换序列</a></li>
+<li><a class="reference internal" href="#id6">设置命令</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id7">参考</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="zsh_begin.html"
+                        title="previous chapter">使用 zsh</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../vim.html"
+                        title="next chapter">Vim</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/linux/zsh_bindkeys.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../vim.html" title="Vim"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="zsh_begin.html" title="使用 zsh"
+             >previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Zetian Yang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>解决Fedora下urxvt256c中ls显示不正常的问题 &mdash; Zetian Yang&#39;s Tech Notes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Zetian Yang&#39;s Tech Notes 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="我的 urxvt 配置文件" href="urxvt_configuration.html" />
+    <link rel="prev" title="Tmux 使用笔记" href="tmux.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="urxvt_configuration.html" title="我的 urxvt 配置文件"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tmux.html" title="Tmux 使用笔记"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="fedoraurxvt256cls">
+<h1>解决Fedora下urxvt256c中ls显示不正常的问题<a class="headerlink" href="#fedoraurxvt256cls" title="Permalink to this headline">¶</a></h1>
+<p>ls 命令会根据 $LS_COLORS 环境变量的值来将不同文件类型以不同的颜色、粗细显示。而LS_COLORS变量是系统根据/etc/DIR_COLORS数据库中的内容生成的。</p>
+<p>而今天在Fedora 15中使用urxvt256c时目录显示却不加粗了，发现$LS_COLORS变量也为空。</p>
+<p>后来发现问题是/etc/DIR_COLORS文件出了问题。</p>
+<p>当使用urxvt256c时，$TERM变量会被设置为 <tt class="docutils literal"><span class="pre">rxvt-unicode-256color</span></tt> ，而在/etc/DIR_COLORS中被写成了 <tt class="docutils literal"><span class="pre">rxvt-unicode-256</span></tt> ，导致了系统无法在数据库中找到当前终端。</p>
+<p>解决办法很简单，直接把 <tt class="docutils literal"><span class="pre">rxvt-unicode-256</span></tt> 改为 <tt class="docutils literal"><span class="pre">rxvt-unicode-256color</span></tt> 即可。或者将/etc/DIR_COLORS复制到~/.dir_colors，这样就不用修改系统文件了。</p>
+<p>附送solarized版本的ls显示方案一枚：</p>
+<p><a class="reference external" href="https://github.com/seebi/dircolors-solarized">https://github.com/seebi/dircolors-solarized</a></p>
+<p>参考：</p>
+<p><a class="reference external" href="http://fedoraproject.org/wiki/Features/256_Color_Terminals">http://fedoraproject.org/wiki/Features/256_Color_Terminals</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tmux.html"
+                        title="previous chapter">Tmux 使用笔记</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="urxvt_configuration.html"
+                        title="next chapter">我的 urxvt 配置文件</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/linux/urxvt256c-ls-problem.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="urxvt_configuration.html" title="我的 urxvt 配置文件"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tmux.html" title="Tmux 使用笔记"
+             >previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Zetian Yang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

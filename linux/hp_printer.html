@@ -1,0 +1,143 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>在 linux 下安装惠普打印机 &mdash; Zetian Yang&#39;s Tech Notes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Zetian Yang&#39;s Tech Notes 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="Linux 动态库查找与链接相关知识" href="ld_order.html" />
+    <link rel="prev" title="修改 Gnome 标题栏宽度与标题栏的隐藏" href="gnome_title_bar.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ld_order.html" title="Linux 动态库查找与链接相关知识"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gnome_title_bar.html" title="修改 Gnome 标题栏宽度与标题栏的隐藏"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="linux">
+<h1>在 linux 下安装惠普打印机<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<p>需要安装 cups, hplip, hp-plugin:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># pacman -S cups, hplip</span>
+<span class="c"># yaourt -S hp-plugin</span>
+</pre></div>
+</div>
+<p>将当前用户加入 sys，lp 组:</p>
+<div class="highlight-python"><pre>sudo gpasswd -a user lp
+sudo gpasswd -a user sys</pre>
+</div>
+<p>启动 cupsd，并将其添加至系统服务中:</p>
+<div class="highlight-python"><pre>sudo /etc/rc.d/cupsd restart</pre>
+</div>
+<p>运行 hp-toolbox，添加打印机:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">hp</span><span class="o">-</span><span class="n">toolbox</span>
+</pre></div>
+</div>
+<p>参考
+<a class="reference external" href="http://www.ai7.org/wp/html/920.html">http://www.ai7.org/wp/html/920.html</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gnome_title_bar.html"
+                        title="previous chapter">修改 Gnome 标题栏宽度与标题栏的隐藏</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ld_order.html"
+                        title="next chapter">Linux 动态库查找与链接相关知识</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/linux/hp_printer.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ld_order.html" title="Linux 动态库查找与链接相关知识"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gnome_title_bar.html" title="修改 Gnome 标题栏宽度与标题栏的隐藏"
+             >previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Zetian Yang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

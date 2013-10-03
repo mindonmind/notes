@@ -1,0 +1,137 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Get Version Info for MKL in Matlab and Numpy/Scipy &mdash; Zetian Yang&#39;s Tech Notes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Zetian Yang&#39;s Tech Notes 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="修改 fedora 的默认等宽字体" href="mono_font.html" />
+    <link rel="prev" title="ls 的输出颜色" href="ls_colors.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="mono_font.html" title="修改 fedora 的默认等宽字体"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ls_colors.html" title="ls 的输出颜色"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="get-version-info-for-mkl-in-matlab-and-numpy-scipy">
+<h1>Get Version Info for MKL in Matlab and Numpy/Scipy<a class="headerlink" href="#get-version-info-for-mkl-in-matlab-and-numpy-scipy" title="Permalink to this headline">¶</a></h1>
+<p>Matlab uses LAPACK and BLAS to do underlying matrix computations. To maximize efficiency in a specific computer architecture, it often uses MKL(for Intel) or ACML(for AMD) as the BLAS implementation.</p>
+<p>If you want to check the version infos for these underlying linear algebra libraries, you could simply do:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">version</span> <span class="o">-</span><span class="n">lapack</span>
+<span class="n">version</span> <span class="o">-</span><span class="n">blas</span>
+</pre></div>
+</div>
+<p>Same as matlab, Numpy/Scipy could also link to MKL/ACML version of BLAS/LAPACK, to check these libraries version, you could enter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">mkl</span>
+<span class="n">mkl</span><span class="o">.</span><span class="n">get_version_string</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>There are also a bunch of other useful functions in the <tt class="docutils literal"><span class="pre">mkl</span></tt> module, such as <tt class="docutils literal"><span class="pre">set_num_threads</span></tt> and <tt class="docutils literal"><span class="pre">get_max_num_threads</span></tt>.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ls_colors.html"
+                        title="previous chapter">ls 的输出颜色</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mono_font.html"
+                        title="next chapter">修改 fedora 的默认等宽字体</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/linux/mkl_version.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="mono_font.html" title="修改 fedora 的默认等宽字体"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ls_colors.html" title="ls 的输出颜色"
+             >previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Zetian Yang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

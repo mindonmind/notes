@@ -1,0 +1,228 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Unimpaired Cheatsheet &mdash; Zetian Yang&#39;s Tech Notes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Zetian Yang&#39;s Tech Notes 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="Vim" href="../vim.html" />
+    <link rel="next" title="Vim 常用命令与快捷键" href="vim_cheatsheet.html" />
+    <link rel="prev" title="Syntastic Cheatsheet" href="syntastic.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="vim_cheatsheet.html" title="Vim 常用命令与快捷键"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="syntastic.html" title="Syntastic Cheatsheet"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../vim.html" accesskey="U">Vim</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="unimpaired-cheatsheet">
+<h1>Unimpaired Cheatsheet<a class="headerlink" href="#unimpaired-cheatsheet" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">command</th>
+<th class="head">meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>[a</td>
+<td>previous file</td>
+</tr>
+<tr class="row-odd"><td>]a</td>
+<td>next file</td>
+</tr>
+<tr class="row-even"><td>[A</td>
+<td>first file</td>
+</tr>
+<tr class="row-odd"><td>]A</td>
+<td>last file</td>
+</tr>
+<tr class="row-even"><td>[b</td>
+<td>previous buffer</td>
+</tr>
+<tr class="row-odd"><td>]b</td>
+<td>next buffer</td>
+</tr>
+<tr class="row-even"><td>[B</td>
+<td>first buffer</td>
+</tr>
+<tr class="row-odd"><td>]B</td>
+<td>last buffer</td>
+</tr>
+<tr class="row-even"><td>[l</td>
+<td>previous location (location list)</td>
+</tr>
+<tr class="row-odd"><td>]l</td>
+<td>next location (location list)</td>
+</tr>
+<tr class="row-even"><td>[q</td>
+<td>previous error (quickfix list)</td>
+</tr>
+<tr class="row-odd"><td>]q</td>
+<td>next error (quickfix list)</td>
+</tr>
+<tr class="row-even"><td>[Q</td>
+<td>first error</td>
+</tr>
+<tr class="row-odd"><td>]Q</td>
+<td>last error</td>
+</tr>
+<tr class="row-even"><td>[t</td>
+<td>previous tag</td>
+</tr>
+<tr class="row-odd"><td>]t</td>
+<td>next tag</td>
+</tr>
+<tr class="row-even"><td>[T</td>
+<td>first tag</td>
+</tr>
+<tr class="row-odd"><td>]T</td>
+<td>next tag</td>
+</tr>
+<tr class="row-even"><td>[&lt;Space&gt;</td>
+<td>add [count] blank lines above</td>
+</tr>
+<tr class="row-odd"><td>]&lt;Space&gt;</td>
+<td>add [count] blank lines below</td>
+</tr>
+<tr class="row-even"><td>[e</td>
+<td>exchange [count] line above with this line</td>
+</tr>
+<tr class="row-odd"><td>]e</td>
+<td>exchange [count] line below with this line</td>
+</tr>
+<tr class="row-even"><td>[os</td>
+<td>open spell</td>
+</tr>
+<tr class="row-odd"><td>]os</td>
+<td>shutdown spell</td>
+</tr>
+<tr class="row-even"><td>yp</td>
+<td>paste with a</td>
+</tr>
+<tr class="row-odd"><td>yP</td>
+<td>paste with i</td>
+</tr>
+<tr class="row-even"><td>yo</td>
+<td>paste with o</td>
+</tr>
+<tr class="row-odd"><td>yO</td>
+<td>paste with O</td>
+</tr>
+<tr class="row-even"><td>yI</td>
+<td>paste with I</td>
+</tr>
+<tr class="row-odd"><td>yA</td>
+<td>paste with A</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="syntastic.html"
+                        title="previous chapter">Syntastic Cheatsheet</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="vim_cheatsheet.html"
+                        title="next chapter">Vim 常用命令与快捷键</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/vim/unimpaired.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="vim_cheatsheet.html" title="Vim 常用命令与快捷键"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="syntastic.html" title="Syntastic Cheatsheet"
+             >previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../vim.html" >Vim</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Zetian Yang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

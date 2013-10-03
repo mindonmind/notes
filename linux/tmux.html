@@ -1,0 +1,392 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Tmux 使用笔记 &mdash; Zetian Yang&#39;s Tech Notes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Zetian Yang&#39;s Tech Notes 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="解决Fedora下urxvt256c中ls显示不正常的问题" href="urxvt256c-ls-problem.html" />
+    <link rel="prev" title="解决 Tmux 中 manpage 无法搜索高亮" href="tmux_highlight_man.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="urxvt256c-ls-problem.html" title="解决Fedora下urxvt256c中ls显示不正常的问题"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tmux_highlight_man.html" title="解决 Tmux 中 manpage 无法搜索高亮"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tmux">
+<h1>Tmux 使用笔记<a class="headerlink" href="#tmux" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>命令行<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="54%" />
+<col width="46%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>tmux new[-session] -s name -d</td>
+<td>新建会话(-d 是否在后台)</td>
+</tr>
+<tr class="row-even"><td>tmux new -s name -n windowname</td>
+<td>新建会话及窗口</td>
+</tr>
+<tr class="row-odd"><td>tmux at[tach] -t session</td>
+<td>重新连接(-t 后接会话名称)</td>
+</tr>
+<tr class="row-even"><td>tmux ls</td>
+<td>显示保存的会话</td>
+</tr>
+<tr class="row-odd"><td>tmux kill-session -t session</td>
+<td>删除会话</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>tmux 命令<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>输入 tmux 命令的两种方式</p>
+<ol class="arabic simple">
+<li>Pre : [command]</li>
+<li>在另一个终端，输入 tmux [command] -t sessionname</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>choose-buffer</td>
+<td>显示所有buffer的内容并粘贴</td>
+</tr>
+<tr class="row-even"><td>list-buffer</td>
+<td>显示所有buffer</td>
+</tr>
+<tr class="row-odd"><td>save-buffer -a -b N output</td>
+<td>将N号buffer的内容输出(-a 表示添加内容)</td>
+</tr>
+<tr class="row-even"><td>show-buffer -b N</td>
+<td>显示N号buffer</td>
+</tr>
+<tr class="row-odd"><td>set-buffer -b N data</td>
+<td>将N号buffer的内容重置</td>
+</tr>
+<tr class="row-even"><td>capture-pane</td>
+<td>将当前面板的内容抓取至0号buffer中</td>
+</tr>
+<tr class="row-odd"><td>swap-pane -s sp -t tp</td>
+<td>交换sp和tp</td>
+</tr>
+<tr class="row-even"><td>break-pane</td>
+<td>将面板变成窗口</td>
+</tr>
+<tr class="row-odd"><td>join-pane -s Sess:S.p -t TSess:T.p</td>
+<td>将Sess会话中S窗口中的p面板(比如0:1.1)合并至T窗口中的面板</td>
+</tr>
+<tr class="row-even"><td>new-window -n name &#8220;shell command&#8221;</td>
+<td>新建窗口并执行命令</td>
+</tr>
+<tr class="row-odd"><td>move-window -r -s Sess:w -t Sess:w</td>
+<td>在会话间移动窗口</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>快捷键绑定<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><strong>注意</strong> ：部分非默认绑定，需结合下节的配置文件使用。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="32%" />
+<col width="68%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Pre [/ESCAPE</td>
+<td>进入复制模式</td>
+</tr>
+<tr class="row-even"><td>Pre [N] ]/p</td>
+<td>复制buffer内的内容</td>
+</tr>
+<tr class="row-odd"><td>Pre =</td>
+<td>选择并粘贴buffer</td>
+</tr>
+<tr class="row-even"><td>Pre (</td>
+<td>前一个会话</td>
+</tr>
+<tr class="row-odd"><td>Pre )</td>
+<td>后一个会话</td>
+</tr>
+<tr class="row-even"><td>Pre c</td>
+<td>新建窗口</td>
+</tr>
+<tr class="row-odd"><td>Pre ,</td>
+<td>改变窗口的名字</td>
+</tr>
+<tr class="row-even"><td>Pre $</td>
+<td>改变会话的名字</td>
+</tr>
+<tr class="row-odd"><td>Pre x</td>
+<td>前一个窗口</td>
+</tr>
+<tr class="row-even"><td>Pre n</td>
+<td>后一个窗口</td>
+</tr>
+<tr class="row-odd"><td>Pre C-h/C-l</td>
+<td>前后窗口</td>
+</tr>
+<tr class="row-even"><td>Pre [0-9]</td>
+<td>选择窗口</td>
+</tr>
+<tr class="row-odd"><td>Pre f</td>
+<td>搜索窗口</td>
+</tr>
+<tr class="row-even"><td>Pre w</td>
+<td>列出所有窗口并选择</td>
+</tr>
+<tr class="row-odd"><td>Pre .</td>
+<td>移动窗口到新的编号</td>
+</tr>
+<tr class="row-even"><td>Pre &amp;</td>
+<td>退出窗口</td>
+</tr>
+<tr class="row-odd"><td>Pre Alt-[1-5]</td>
+<td>切换面板的布局</td>
+</tr>
+<tr class="row-even"><td>Pre Space</td>
+<td>切换面板布局</td>
+</tr>
+<tr class="row-odd"><td>Pre C-o</td>
+<td>顺序轮换面板</td>
+</tr>
+<tr class="row-even"><td>Pre M-o</td>
+<td>逆序轮换面板</td>
+</tr>
+<tr class="row-odd"><td>Pre {/}</td>
+<td>上/下交换面板(swap-pane -U/-D)</td>
+</tr>
+<tr class="row-even"><td>Pre o</td>
+<td>切换当前面板</td>
+</tr>
+<tr class="row-odd"><td>Pre l/r/u/d</td>
+<td>切换当前面板</td>
+</tr>
+<tr class="row-even"><td>Pre C-l/r/u/d</td>
+<td>改变面板大小</td>
+</tr>
+<tr class="row-odd"><td>Pre L/R/U/D</td>
+<td>改变面板大小</td>
+</tr>
+<tr class="row-even"><td>Pre q</td>
+<td>显示面板编号并选择</td>
+</tr>
+<tr class="row-odd"><td>Pre !</td>
+<td>将面板改为窗口</td>
+</tr>
+<tr class="row-even"><td>Pre %</td>
+<td>竖排新建面板</td>
+</tr>
+<tr class="row-odd"><td>Pre &#8220;</td>
+<td>横排新建面板</td>
+</tr>
+<tr class="row-even"><td>Pre z</td>
+<td>关闭面板</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>参考配置文件<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre># setw == set-window-option
+# set -s server option
+# set -g global option
+# bind == bind-key
+
+# add manpage highlight
+set -g default-terminal "screen-it"
+set -g prefix C-s
+# get out of delay time
+set -sg escape-time 1
+# repeat-time
+set -g repeat-time 1000
+
+# let window/pane begin at 1
+set -g base-index 1
+set -g pane-base-index 1
+
+setw -g mode-keys vi
+
+# status-bar
+set -g status-utf8 on
+set -g status-left-length 40
+set -g status-left "#[fg=black]Session: #S #[fg=blue]#I #[fg=red]#P"
+set -g status-right "#[fg=black]%d %b %R"
+set -g status-justify centre
+
+# mouse
+set -g mode-mouse on
+set -g mouse-resize-pane on
+set -g mouse-select-pane on
+set -g mouse-select-window on
+
+
+# keybinds
+unbind C-b
+bind C-s send-prefix
+
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+# windows
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+bind x last-window
+
+# panes
+bind | split-window -h
+bind -r h select-pane -L
+bind -r j select-pane -D
+bind -r k select-pane -U
+bind -r l select-pane -R
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+bind z kill-pane
+
+# copy and paste
+bind Escape copy-mode
+bind p paste-buffer
+bind -t vi-copy 'v' begin-selection
+bind -t vi-copy 'y' copy-selection
+
+# toggle log pane
+bind P pipe-pane -o "cat &gt;&gt;~/#W.log" \; display "Toggled logging to ~/#W.log"</pre>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>参考<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://book.douban.com/subject/10541112/">Tmux: Productive Mouse-Free Development</a></li>
+<li><a class="reference external" href="http://blog.hawkhost.com/2010/06/28/tmux-the-terminal-multiplexer/">TMUX: The Terminal Multiplexer (Part 1)</a></li>
+<li><a class="reference external" href="http://blog.hawkhost.com/2010/07/02/tmux-–-the-terminal-multiplexer-part-2/">TMux: The Terminal Multiplexer (Part 2)</a></li>
+<li><a class="reference external" href="https://wiki.freebsdchina.org/software/t/tmux">使用 Tmux</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tmux 使用笔记</a><ul>
+<li><a class="reference internal" href="#id1">命令行</a></li>
+<li><a class="reference internal" href="#id2">tmux 命令</a></li>
+<li><a class="reference internal" href="#id3">快捷键绑定</a></li>
+<li><a class="reference internal" href="#id4">参考配置文件</a></li>
+<li><a class="reference internal" href="#id5">参考</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tmux_highlight_man.html"
+                        title="previous chapter">解决 Tmux 中 manpage 无法搜索高亮</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="urxvt256c-ls-problem.html"
+                        title="next chapter">解决Fedora下urxvt256c中ls显示不正常的问题</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/linux/tmux.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="urxvt256c-ls-problem.html" title="解决Fedora下urxvt256c中ls显示不正常的问题"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tmux_highlight_man.html" title="解决 Tmux 中 manpage 无法搜索高亮"
+             >previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Zetian Yang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

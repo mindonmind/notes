@@ -1,0 +1,134 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Using Python Slice Objects to Index a ndarray &mdash; Zetian Yang&#39;s Tech Notes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Zetian Yang&#39;s Tech Notes 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="Python" href="../python.html" />
+    <link rel="next" title="使用 Virtualenv 与 pip 进行科学计算库开发" href="virtualenv_dev.html" />
+    <link rel="prev" title="Python Cheatsheet" href="python_cheatsheet.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="virtualenv_dev.html" title="使用 Virtualenv 与 pip 进行科学计算库开发"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="python_cheatsheet.html" title="Python Cheatsheet"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../python.html" accesskey="U">Python</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="using-python-slice-objects-to-index-a-ndarray">
+<h1>Using Python Slice Objects to Index a ndarray<a class="headerlink" href="#using-python-slice-objects-to-index-a-ndarray" title="Permalink to this headline">¶</a></h1>
+<p>Some times you just want to use an object(variable) to refering to those <tt class="docutils literal"><span class="pre">:</span></tt> functionalities in your python code, you can achieve this by:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nb">slice</span><span class="p">(</span><span class="n">none</span><span class="p">)</span> <span class="c"># the same as [:]</span>
+<span class="nb">slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span> <span class="c"># the same as [start:stop]</span>
+<span class="nb">slice</span><span class="p">(</span><span class="n">none</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>  <span class="c"># [:stop]</span>
+<span class="nb">slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">none</span><span class="p">)</span> <span class="c"># [start:]</span>
+<span class="nb">slice</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span> <span class="c"># [start:stop:step]</span>
+</pre></div>
+</div>
+<p>Have fun :)</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="python_cheatsheet.html"
+                        title="previous chapter">Python Cheatsheet</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="virtualenv_dev.html"
+                        title="next chapter">使用 Virtualenv 与 pip 进行科学计算库开发</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/python/slice_objects.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="virtualenv_dev.html" title="使用 Virtualenv 与 pip 进行科学计算库开发"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="python_cheatsheet.html" title="Python Cheatsheet"
+             >previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../python.html" >Python</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Zetian Yang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

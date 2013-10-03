@@ -1,0 +1,304 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>GNU Screen 笔记 &mdash; Zetian Yang&#39;s Tech Notes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Zetian Yang&#39;s Tech Notes 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="解决 sftp/scp 连接服务器无响应 (ssh 正常) 的问题" href="sftp_scp_zsh_fail.html" />
+    <link rel="prev" title="修改 fedora 的默认等宽字体" href="mono_font.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sftp_scp_zsh_fail.html" title="解决 sftp/scp 连接服务器无响应 (ssh 正常) 的问题"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mono_font.html" title="修改 fedora 的默认等宽字体"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="gnu-screen">
+<h1>GNU Screen 笔记<a class="headerlink" href="#gnu-screen" title="Permalink to this headline">¶</a></h1>
+<p>Screen 是一个及其强大的好工具，可以讲终端垂直水平分割为多个子窗口，从而提高工作效率。</p>
+<div class="section" id="id1">
+<h2>基本设定<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>-h lines</td>
+<td>设定回滚历史缓冲区行数</td>
+</tr>
+<tr class="row-even"><td>-ls</td>
+<td>列出所有 session</td>
+</tr>
+<tr class="row-odd"><td>-S sockname</td>
+<td>为 session 起一个名字</td>
+</tr>
+<tr class="row-even"><td>-wipe</td>
+<td>清空已结束的 session</td>
+</tr>
+<tr class="row-odd"><td>-r [session]</td>
+<td>恢复 session</td>
+</tr>
+<tr class="row-even"><td>-d -m</td>
+<td>开启一个一开始就断开的会话</td>
+</tr>
+<tr class="row-odd"><td>-e^Bb</td>
+<td>指定命令符</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>常用指令<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>c-a ?</td>
+<td>查看命令</td>
+</tr>
+<tr class="row-even"><td>c-a c</td>
+<td>新建窗口</td>
+</tr>
+<tr class="row-odd"><td>c-a c-a</td>
+<td>切换前后窗口</td>
+</tr>
+<tr class="row-even"><td>c-a 0..9</td>
+<td>进入指定窗口</td>
+</tr>
+<tr class="row-odd"><td>c-a d</td>
+<td>断开会话</td>
+</tr>
+<tr class="row-even"><td>c-a A</td>
+<td>为窗口起名</td>
+</tr>
+<tr class="row-odd"><td>c-a w</td>
+<td>查看所有窗口</td>
+</tr>
+<tr class="row-even"><td>c-a :</td>
+<td>进入命令模式</td>
+</tr>
+<tr class="row-odd"><td>c-a S</td>
+<td>水平分割</td>
+</tr>
+<tr class="row-even"><td>c-a</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>c-a X</td>
+<td>关闭当前区域</td>
+</tr>
+<tr class="row-even"><td>c-a [</td>
+<td>进入复制模式</td>
+</tr>
+<tr class="row-odd"><td>c-a ]</td>
+<td>粘贴</td>
+</tr>
+<tr class="row-even"><td>c-a { or }</td>
+<td>复制粘贴上一条命令</td>
+</tr>
+<tr class="row-odd"><td>c-a *</td>
+<td>显示所有当前连接的会话</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>常用命令<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>hardcopy</td>
+<td>将当前界面写入 hardcopy.n 文件</td>
+</tr>
+<tr class="row-even"><td>split</td>
+<td>水平分割</td>
+</tr>
+<tr class="row-odd"><td>split -v</td>
+<td>垂直分割</td>
+</tr>
+<tr class="row-even"><td>remove</td>
+<td>移除当前窗口</td>
+</tr>
+<tr class="row-odd"><td>only</td>
+<td>仅保留当前窗口</td>
+</tr>
+<tr class="row-even"><td>resize +N</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>resize -N</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>resize N</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>resize =</td>
+<td>调整窗口大小</td>
+</tr>
+<tr class="row-even"><td>scrollback num</td>
+<td>设置回滚行数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h2>复制模式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>标记<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>复制的范围由两个标记决定。可用标记包括：</p>
+<ul class="simple">
+<li>空格</li>
+<li>y或Y</li>
+<li>w或W</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>使用技巧<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>使用 x 来重新设定第一个标记。</li>
+<li>标记后用 <tt class="docutils literal"><span class="pre">c</span></tt> 确定左边界，用 <tt class="docutils literal"><span class="pre">C</span></tt> 确定右边界，可以选取组快区域</li>
+</ul>
+</div>
+</div>
+<div class="section" id="screen-rc">
+<h2>screen.rc<a class="headerlink" href="#screen-rc" title="Permalink to this headline">¶</a></h2>
+<p>绑定窗口移动:</p>
+<div class="highlight-python"><pre>bind h focus left
+bind j focus down
+bind k focus up
+bind l focus right</pre>
+</div>
+<p>设定256色:</p>
+<div class="highlight-python"><pre>attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">GNU Screen 笔记</a><ul>
+<li><a class="reference internal" href="#id1">基本设定</a></li>
+<li><a class="reference internal" href="#id2">常用指令</a></li>
+<li><a class="reference internal" href="#id3">常用命令</a></li>
+<li><a class="reference internal" href="#id4">复制模式</a><ul>
+<li><a class="reference internal" href="#id5">标记</a></li>
+<li><a class="reference internal" href="#id6">使用技巧</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#screen-rc">screen.rc</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mono_font.html"
+                        title="previous chapter">修改 fedora 的默认等宽字体</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sftp_scp_zsh_fail.html"
+                        title="next chapter">解决 sftp/scp 连接服务器无响应 (ssh 正常) 的问题</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/linux/screen.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sftp_scp_zsh_fail.html" title="解决 sftp/scp 连接服务器无响应 (ssh 正常) 的问题"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mono_font.html" title="修改 fedora 的默认等宽字体"
+             >previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Zetian Yang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

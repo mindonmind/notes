@@ -1,0 +1,156 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>X Window的文本复制与粘贴 &mdash; Zetian Yang&#39;s Tech Notes 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Zetian Yang&#39;s Tech Notes 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="X Window 启动方式" href="X_window_start_up.html" />
+    <link rel="prev" title="xmodmap 无法自动加载设置" href="xmodmap_noautoload.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="X_window_start_up.html" title="X Window 启动方式"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="xmodmap_noautoload.html" title="xmodmap 无法自动加载设置"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="x-window">
+<h1>X Window的文本复制与粘贴<a class="headerlink" href="#x-window" title="Permalink to this headline">¶</a></h1>
+<p>我们都知道在 Windows 下可以使用 <tt class="docutils literal"><span class="pre">Ctrl-C</span></tt> 和 <tt class="docutils literal"><span class="pre">Ctrl-V</span></tt> 来对选定文本进行复制与粘贴，而在 X Window 下，有着完全不同的粘贴模式。</p>
+<div class="section" id="id1">
+<h2>X Window 文本传输机制<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>在X中，存在Slection, Cut Buffer 以及 Drag and Drop 三种机制用于在不同客户端之间传送文本。其中Selection最为常用，也与 Windows 中的复制粘贴最为相似。</p>
+</div>
+<div class="section" id="id2">
+<h2>剪切板<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Selection 机制允许用户在某一客户端中选中文本，并在另一客户端中使用这段文本，文本的传输通过两个客户端依照通信协议 (ICCCM) 完成。</p>
+<p>此外，X 设定了两种文本选择方案，分别称为 <tt class="docutils literal"><span class="pre">PRIMARY</span></tt> 与 <tt class="docutils literal"><span class="pre">CLIPBOARD</span></tt> ，可以把它们看作两个不同的系统剪切板。</p>
+<p>当用户在客户端内选中文本时，文本内容即会被放入 <tt class="docutils literal"><span class="pre">PRIMARY</span></tt> 中，而若想将文本放入 <tt class="docutils literal"><span class="pre">CLIPBORAD</span></tt> 中，则需要在客户端内显式地执行复制命令，比如右键后选 <tt class="docutils literal"><span class="pre">copy</span></tt> 。</p>
+</div>
+<div class="section" id="id3">
+<h2>文本粘贴<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>两个剪切板有各自的文本粘贴方式。若想粘贴 <tt class="docutils literal"><span class="pre">PRIMARY</span></tt> 中的内容，大多客户端中可以使用鼠标中键或者按 <tt class="docutils literal"><span class="pre">SHIFT-Ins</span></tt> ，如果想粘贴 <tt class="docutils literal"><span class="pre">CLIPBOARD</span></tt> 中的内容，需要显式地执行粘贴命令，比如右键菜单或编辑菜单中的粘贴选项。</p>
+<p>需要注意的是，如果想在 Vim 中使用系统剪切板，需要在编译时添加 <tt class="docutils literal"><span class="pre">+xterm_clipboard</span></tt> 选项，添加后方可以用 <tt class="docutils literal"><span class="pre">&quot;+gP</span></tt> 粘贴 <tt class="docutils literal"><span class="pre">CLIPBOARD</span></tt> 中的内容。</p>
+</div>
+<div class="section" id="id4">
+<h2>参考<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/X_Window_selection">http://en.wikipedia.org/wiki/X_Window_selection</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">X Window的文本复制与粘贴</a><ul>
+<li><a class="reference internal" href="#id1">X Window 文本传输机制</a></li>
+<li><a class="reference internal" href="#id2">剪切板</a></li>
+<li><a class="reference internal" href="#id3">文本粘贴</a></li>
+<li><a class="reference internal" href="#id4">参考</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="xmodmap_noautoload.html"
+                        title="previous chapter">xmodmap 无法自动加载设置</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="X_window_start_up.html"
+                        title="next chapter">X Window 启动方式</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/linux/X_selection_paste.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="X_window_start_up.html" title="X Window 启动方式"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="xmodmap_noautoload.html" title="xmodmap 无法自动加载设置"
+             >previous</a> |</li>
+        <li><a href="../index.html">Zetian Yang&#39;s Tech Notes 0.0.1 documentation</a> &raquo;</li>
+          <li><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Zetian Yang.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
