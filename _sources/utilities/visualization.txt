@@ -23,6 +23,7 @@ LaTeX related:
 * `Asymptote <http://asymptote.sourceforge.net/>`_ descriptive vector graphics language
 * `dot2tex <https://code.google.com/p/dot2tex/>`_ another Latex plugin with Graphviz
 * `Ladot <http://brighten.bigw.org/projects/ladot/>`_ Latex in Graphviz dot files
+* `PyX <http://pyx.sourceforge.net/gallery/index.html>`_ Python Graphics Library
 
 For simple concept diagram with equations :
 
