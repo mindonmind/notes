@@ -7,3 +7,4 @@ Some useful tools.
     :maxdepth: 2
 
     utilities/visualization.rst
+    utilities/build_slicer.rst
