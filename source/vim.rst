@@ -22,3 +22,5 @@ Vim
     vim/vim_runtime.rst
     vim/vim_solarized.rst
     vim/vim_syntax.rst
+
+
