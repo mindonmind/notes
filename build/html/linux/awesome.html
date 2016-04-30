@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>awesome桌面管理器笔记 &mdash; MindonTech 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MindonTech 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="Change Library Search Path For Binary Files in Linux" href="change_rpath.html" />
+    <link rel="prev" title="Arch Linux 时间显示不正确" href="arch_time.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="change_rpath.html" title="Change Library Search Path For Binary Files in Linux"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arch_time.html" title="Arch Linux 时间显示不正确"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="awesome">
+<h1>awesome桌面管理器笔记<a class="headerlink" href="#awesome" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fedoara">
+<h2>在fedoara下安装<a class="headerlink" href="#fedoara" title="Permalink to this headline">¶</a></h2>
+<p>添加yum源</p>
+<div class="highlight-python"><div class="highlight"><pre>su -c &#39;wget -nd -p /etc/yum.repos.d http://repos.fedorapeople.org/repos/thm/awesome/fedora-awesome.repo&#39;
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>安装::</dt>
+<dd>su -c &#8216;yum install awesome&#8217;</dd>
+</dl>
+</div>
+<div class="section" id="id1">
+<h2>快捷键<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>标准xmodmap输出:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>mod1</td>
+<td>alt_l, alt_r, meta_l</td>
+</tr>
+<tr class="row-even"><td>mod2</td>
+<td>num_lock</td>
+</tr>
+<tr class="row-odd"><td>mod4</td>
+<td>win 键</td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="64%" />
+<col width="36%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">一般命令</th>
+<th class="head">快捷键</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>打开菜单</td>
+<td>mod4 + w</td>
+</tr>
+<tr class="row-odd"><td>打开程序选择器(需修改配置文件)</td>
+<td>alt + esc</td>
+</tr>
+<tr class="row-even"><td>打开程序或命令</td>
+<td>mod4 + r</td>
+</tr>
+<tr class="row-odd"><td>执行lua代码</td>
+<td>mod4 + x</td>
+</tr>
+<tr class="row-even"><td>打开终端</td>
+<td>mod4 + enter</td>
+</tr>
+<tr class="row-odd"><td>重启awesome</td>
+<td>mod4 + ctrl + r</td>
+</tr>
+<tr class="row-even"><td>退出awesome</td>
+<td>mod4 + shift + q</td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">桌面操作</th>
+<th class="head">快捷键</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>切换桌面</td>
+<td>mod4 + num</td>
+</tr>
+<tr class="row-odd"><td>在桌面间移动</td>
+<td>mod4 + left/right</td>
+</tr>
+<tr class="row-even"><td>切换至上一个桌面</td>
+<td>mod4 + esc</td>
+</tr>
+<tr class="row-odd"><td>将另一桌面的内容显示至当前桌面</td>
+<td>mod4 + ctrl + num</td>
+</tr>
+<tr class="row-even"><td>更改桌面布局</td>
+<td>mod4 + space</td>
+</tr>
+<tr class="row-odd"><td>反向更改桌面布局</td>
+<td>mod4 + shift + space</td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<table border="1" class="docutils">
+<colgroup>
+<col width="56%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">窗口操作</th>
+<th class="head">快捷键</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>切换至下一窗口</td>
+<td>Mod4 + j</td>
+</tr>
+<tr class="row-odd"><td>切换至上一窗口</td>
+<td>Mod4 + k</td>
+</tr>
+<tr class="row-even"><td>在两个窗口间切换</td>
+<td>Mod4 + Tab</td>
+</tr>
+<tr class="row-odd"><td>将当前窗口与下一窗口互换位置</td>
+<td>Mod4 + Shift + j</td>
+</tr>
+<tr class="row-even"><td>将当前窗口与上一窗口互换位置</td>
+<td>Mod4 + Shift + k</td>
+</tr>
+<tr class="row-odd"><td>增加窗口大小</td>
+<td>Mod4 + l</td>
+</tr>
+<tr class="row-even"><td>减小窗口大小</td>
+<td>Mod4 + h</td>
+</tr>
+<tr class="row-odd"><td>增加主窗口个数</td>
+<td>Mod4 + Shift + l</td>
+</tr>
+<tr class="row-even"><td>减少主窗口个数</td>
+<td>Mod4 + Shift + h</td>
+</tr>
+<tr class="row-odd"><td>切换窗口的浮动状态</td>
+<td>Mod4 + Ctrl + Space</td>
+</tr>
+<tr class="row-even"><td>窗口最大化与还原</td>
+<td>Mod4 + m</td>
+</tr>
+<tr class="row-odd"><td>全屏与还原</td>
+<td>Mod4 + f</td>
+</tr>
+<tr class="row-even"><td>窗口最小化</td>
+<td>Mod4 + n</td>
+</tr>
+<tr class="row-odd"><td>窗口最小化还原</td>
+<td>Mod4 + Ctrl + n</td>
+</tr>
+<tr class="row-even"><td>移动至另一桌面</td>
+<td>Mod4 + Shift + num</td>
+</tr>
+<tr class="row-odd"><td>关闭窗口</td>
+<td>Mod4 + Shift + c</td>
+</tr>
+<tr class="row-even"><td>移动浮动窗口位置-鼠标</td>
+<td>Mod4 + mouse-left-click</td>
+</tr>
+<tr class="row-odd"><td>更改浮动窗口大小-鼠标</td>
+<td>Mod4 + mouse-right-click</td>
+</tr>
+<tr class="row-even"><td>移动浮动窗口位置-键盘</td>
+<td>Mod4 + Ctrl + Arrow-keys</td>
+</tr>
+<tr class="row-odd"><td>更改浮动窗口大小-键盘</td>
+<td>Mod4 + PgUp/DN</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id2">
+<h2>参考<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://awesome.naquadah.org/wiki/FAQ">http://awesome.naquadah.org/wiki/FAQ</a></li>
+<li><a class="reference external" href="http://josephpan.net/blog/?p=992">http://josephpan.net/blog/?p=992</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">awesome桌面管理器笔记</a><ul>
+<li><a class="reference internal" href="#fedoara">在fedoara下安装</a></li>
+<li><a class="reference internal" href="#id1">快捷键</a></li>
+<li><a class="reference internal" href="#id2">参考</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arch_time.html"
+                        title="previous chapter">Arch Linux 时间显示不正确</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="change_rpath.html"
+                        title="next chapter">Change Library Search Path For Binary Files in Linux</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/linux/awesome.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="change_rpath.html" title="Change Library Search Path For Binary Files in Linux"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arch_time.html" title="Arch Linux 时间显示不正确"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2013, MindonMind.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

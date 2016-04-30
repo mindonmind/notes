@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Arch Linux 时间显示不正确 &mdash; MindonTech 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MindonTech 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="awesome桌面管理器笔记" href="awesome.html" />
+    <link rel="prev" title="Arch Linux 静态 IP 设置" href="arch_static_ip.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="awesome.html" title="awesome桌面管理器笔记"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arch_static_ip.html" title="Arch Linux 静态 IP 设置"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="arch-linux">
+<h1>Arch Linux 时间显示不正确<a class="headerlink" href="#arch-linux" title="Permalink to this headline">¶</a></h1>
+<p>先装了 Arch 之后又安装了 Windows，结果主板上的时间就华丽丽得被改快了十分钟。</p>
+<p>解决方案如下：</p>
+<p>1.首先修改 Windows 注册表，让其使用 <code class="docutils literal"><span class="pre">UTC</span></code> 时间:</p>
+<div class="highlight-python"><div class="highlight"><pre>Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation]
+   &quot;RealTimeIsUniversal&quot;=dword:00000001
+</pre></div>
+</div>
+<p>将上边的内容粘贴至某后缀为 .reg 的文件，双击执行即可。</p>
+<p>2.切换至 Arch，手工或利用 ntpd 将时间修改至当前正确时间，其中推荐 ntpd 方案:</p>
+<div class="highlight-python"><div class="highlight"><pre>/etc/rc.d/openntpd start
+ntpd -s
+</pre></div>
+</div>
+<p>3.时间正确后，将其写入 BIOS:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">hwclock</span> <span class="o">-</span><span class="n">w</span>
+</pre></div>
+</div>
+<p>搞定。</p>
+<hr class="docutils" />
+<p>参考</p>
+<p><a class="reference external" href="http://bbs.archlinuxcn.org/viewtopic.php?id=424">http://bbs.archlinuxcn.org/viewtopic.php?id=424</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arch_static_ip.html"
+                        title="previous chapter">Arch Linux 静态 IP 设置</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="awesome.html"
+                        title="next chapter">awesome桌面管理器笔记</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/linux/arch_time.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="awesome.html" title="awesome桌面管理器笔记"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arch_static_ip.html" title="Arch Linux 静态 IP 设置"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2013, MindonMind.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

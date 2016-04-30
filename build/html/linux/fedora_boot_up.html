@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Fedora 启动过程 &mdash; MindonTech 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MindonTech 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="Solarized Gnome-terminal" href="gnome_terminal_solarized.html" />
+    <link rel="prev" title="Fcitx 笔记" href="fcitx_shortkeys.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gnome_terminal_solarized.html" title="Solarized Gnome-terminal"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fcitx_shortkeys.html" title="Fcitx 笔记"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="fedora">
+<h1>Fedora 启动过程<a class="headerlink" href="#fedora" title="Permalink to this headline">¶</a></h1>
+<p>不同体系结构的启动初始步骤互不相同，但一旦内核被加载完成，那么后面的启动过程在不同体系结构中都时一样的。</p>
+<p>下面以x86机器为例说明 fedora 的启动过程。</p>
+<div class="section" id="bios">
+<h2>BIOS<a class="headerlink" href="#bios" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>CPU在系统内存地址的最后面寻找BIOS(Basic Input/Output System)程序并将之执行。BIOS程序将引导后面的启动过程，此外，它还提供了访问外围设备的基础接口。因此，它常常被写入只读存储，并且总能够被使用。</li>
+<li>BIOS检测系统以及其他外围设备。之后它选取引导设备,并将该设备的第一个扇区（又称为主引导记录，MBR）载入内存。该扇区仅有512字节大小，它包含了引导机器的一些机器码（boot loader）和分区表。剩下的引导过程将有boot loader执行。</li>
+</ol>
+</div>
+<div class="section" id="boot-loader">
+<h2>Boot Loader<a class="headerlink" href="#boot-loader" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Boot Loader 可分为两部分，第一部分仅为一小段机器码，它负责将第二部分载入内存。</li>
+<li>当第二部分载入内存后，boot loader 根据配置文件列出可用的内核列表。用户选择后，boot loader在 <code class="docutils literal"><span class="pre">/boot</span></code> 目录找到相应的内核。之后，boot loader 载入一个或多个 <code class="docutils literal"><span class="pre">initramfs</span></code> 镜像至内存，内核需要用这些 <code class="docutils literal"><span class="pre">initramfs</span></code> 加载必须的驱动和相关模块。之后的引导过程由内核负责。</li>
+</ol>
+</div>
+<div class="section" id="kernel">
+<h2>Kernel<a class="headerlink" href="#kernel" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>内核一旦被加载，它将对内存进行初始化及配置，同时设置好与系统相连的各种硬件设备，包括各处理器，输入输出子系统以及存储设备。</li>
+<li>接下来，内核到固定的地址寻找 <code class="docutils literal"><span class="pre">initramfs</span></code> ，并将其解压至 <code class="docutils literal"><span class="pre">/sysroot/</span></code> 。然后内存从中载入所有必须的驱动程序，并对与文件系统相关的虚拟设备进行初始化，比如 LVM 或软RAID。</li>
+<li>内核创建一个根设备，并释放所有可用内存。</li>
+<li>内核执行 <code class="docutils literal"><span class="pre">/sbin/init</span></code> 程序创建用户环境。</li>
+</ol>
+</div>
+<div class="section" id="sbin-init">
+<h2>/sbin/init 程序<a class="headerlink" href="#sbin-init" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>init 执行 /etc/rc.d/rc.sysinit 对系统进行初始化</li>
+<li>init 根据 /etc/inittab 中指定的运行级别，执行 /etc/rc.d/rc&lt;x&gt;.d 中的所有服务，并称为这些自动执行的进程的父进程。这些服务也可以使用 <code class="docutils literal"><span class="pre">service</span> <span class="pre">&lt;command&gt;</span> <span class="pre">start</span></code> 或 <code class="docutils literal"><span class="pre">/etc/init.d/&lt;command&gt;</span> <span class="pre">start</span></code> 启动。</li>
+<li>init 程序最后将执行 /etc/rc.d/rc.loacl 文件。</li>
+<li>Upstart（一种 init daemon）根据运行级别所指定的每一个虚拟控制台分叉出一个 /sbin/mingetty 进程，这些进程打开与 tty 的通信通路，设置它们的模式，打印登录提示，接受用户名与密码，并初始化登录过程。如果运行在5级别，Upstart 调用 /etc/X11/prefdm 程序，它将选择相应的 X 显式管理器，比如gdm，kdm或xdm，由 /etc/sysconfig/desktop 文件指定。</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h2>附<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>运行级别管理工具: chkconfig</li>
+<li>在启动时修改运行级别：在Grub启动界面输入 <code class="docutils literal"><span class="pre">a</span> <span class="pre">&lt;space&gt;&lt;runlevel&gt;</span></code></li>
+<li>XDM 负责用户验证，并启动 X 会话</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>参考<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://docs.fedoraproject.org/en-US/Fedora/13/html/Installation_Guide/ch-boot-init-shutdown.html">http://docs.fedoraproject.org/en-US/Fedora/13/html/Installation_Guide/ch-boot-init-shutdown.html</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Fedora 启动过程</a><ul>
+<li><a class="reference internal" href="#bios">BIOS</a></li>
+<li><a class="reference internal" href="#boot-loader">Boot Loader</a></li>
+<li><a class="reference internal" href="#kernel">Kernel</a></li>
+<li><a class="reference internal" href="#sbin-init">/sbin/init 程序</a></li>
+<li><a class="reference internal" href="#id1">附</a></li>
+<li><a class="reference internal" href="#id2">参考</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fcitx_shortkeys.html"
+                        title="previous chapter">Fcitx 笔记</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="gnome_terminal_solarized.html"
+                        title="next chapter">Solarized Gnome-terminal</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/linux/fedora_boot_up.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gnome_terminal_solarized.html" title="Solarized Gnome-terminal"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fcitx_shortkeys.html" title="Fcitx 笔记"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2013, MindonMind.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

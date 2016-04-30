@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>How to Build 3D Slicer &mdash; MindonTech 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MindonTech 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="Utilities" href="../utilities.html" />
+    <link rel="prev" title="Visualization Tools" href="visualization.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="visualization.html" title="Visualization Tools"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../utilities.html" accesskey="U">Utilities</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="how-to-build-3d-slicer">
+<h1>How  to Build 3D Slicer<a class="headerlink" href="#how-to-build-3d-slicer" title="Permalink to this headline">¶</a></h1>
+<p>General Instruction: <a class="reference external" href="https://www.slicer.org/slicerWiki/index.php/Documentation/Nightly/Developers/Build_Instructions">Documentation/Nightly/Developers/Build Instructions</a></p>
+<div class="section" id="on-windows">
+<h2>On Windows<a class="headerlink" href="#on-windows" title="Permalink to this headline">¶</a></h2>
+<p>1.Install Visual Studio Express (Remember to install Git and OpenSSL)</p>
+<p>2.Install Qt 4.8.6 (Qt 5.x won&#8217;t work) binaries from <a class="reference external" href="https://www.slicer.org/slicerWiki/index.php/Documentation/Nightly/Developers/Build_Instructions/Prerequisites/Qt#Windows">Slicer website</a></p>
+<p>3.Install CMake binaries.</p>
+<p>4.Download slicer source code from github.</p>
+<p>5.Open Cmake gui. Select source directory and build directory.</p>
+<p>6.Add following Environment Variables</p>
+<div class="highlight-python"><div class="highlight"><pre>CMAKE_INSTALL_PREFIX = /path/to/install/dir
+QT_QMAKE_EXECTUABLE = /path/to/qt/bin/qmake.exe
+</pre></div>
+</div>
+<p>7.Click <code class="docutils literal"><span class="pre">Configure</span></code> and then <code class="docutils literal"><span class="pre">Generate</span></code></p>
+<p>8.Cd to build dir. Open the <code class="docutils literal"><span class="pre">Slicer.sln</span></code> file. It will be opened in the Visual Studio.</p>
+<p>9.In Visual Studio, Set the active build configuration into <code class="docutils literal"><span class="pre">Active</span></code>. See <a class="reference external" href="https://msdn.microsoft.com/en-us/library/aa244296(v=vs.60).aspx">Setting the Active Build Configuration</a></p>
+<p>10.Build the <code class="docutils literal"><span class="pre">All_BUILD</span></code> project.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">How  to Build 3D Slicer</a><ul>
+<li><a class="reference internal" href="#on-windows">On Windows</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="visualization.html"
+                        title="previous chapter">Visualization Tools</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/utilities/build_slicer.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="visualization.html" title="Visualization Tools"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../utilities.html" >Utilities</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2013, MindonMind.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

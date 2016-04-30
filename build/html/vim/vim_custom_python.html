@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Build Vim With Custom Python (e.g. EPD) Support &mdash; MindonTech 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MindonTech 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="Vim" href="../vim.html" />
+    <link rel="next" title="VIMRUNTIME 规则" href="vim_runtime.html" />
+    <link rel="prev" title="Vim 常用命令与快捷键" href="vim_cheatsheet.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="vim_runtime.html" title="VIMRUNTIME 规则"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="vim_cheatsheet.html" title="Vim 常用命令与快捷键"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../vim.html" accesskey="U">Vim</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="build-vim-with-custom-python-e-g-epd-support">
+<h1>Build Vim With Custom Python (e.g. EPD) Support<a class="headerlink" href="#build-vim-with-custom-python-e-g-epd-support" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="preinstallation">
+<h2>Preinstallation<a class="headerlink" href="#preinstallation" title="Permalink to this headline">¶</a></h2>
+<p>1.Make sure <code class="docutils literal"><span class="pre">which</span> <span class="pre">python</span></code> gives the specific python you want to build vim with.</p>
+<p>2.If possible, remove the origin python built in your system (/usr/bin/python) or go to 3</p>
+<div class="highlight-python"><div class="highlight"><pre>pacman -R python2    # you can use your own package manager
+</pre></div>
+</div>
+<p>3.If you don&#8217;t remove the python packaged with your system, you may have <code class="docutils literal"><span class="pre">libpython2.7.so</span></code> in your <code class="docutils literal"><span class="pre">/usr/lib</span></code> or <code class="docutils literal"><span class="pre">/usr/local/lib</span></code>, which may bring troubles in the following installation. So mask them first</p>
+<div class="highlight-python"><div class="highlight"><pre>cd /usr/lib          # or /usr/local/lib
+sudo mv libpython2.7.so libpython2.7.so.back
+sudo mv libpython2.7.so.1.0 libpython2.7.so.1.0.back
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Download the Vim source, in arch</p>
+<div class="highlight-python"><div class="highlight"><pre>abs extra/vim
+cp -r /var/extra/vim ~/abs/vim
+</pre></div>
+</div>
+<p>Configure your vim installation with python support, e.g</p>
+<div class="highlight-python"><div class="highlight"><pre>./configure --prefix=/path/to/your/installdir/ \
+            --with-features=huge \
+            --enable-gpm \
+            --enable-acl \
+            --enable-multibyte \                                                # for UltiSnip and NERDTree
+            --enable-cscope \
+            --enable-perlinterp \
+            --enable-pythoninterp \
+            --with-python-config-dir=/usr/local/epd-7.3-2/lib/python2.7/config   # this line could be omitted
+            --disable-selinux
+</pre></div>
+</div>
+<p><em>Notice:</em> During the configuration procedure of latest vim version, configure tries to find <code class="docutils literal"><span class="pre">python2</span></code> instead of <code class="docutils literal"><span class="pre">python</span></code>, so make sure <code class="docutils literal"><span class="pre">python2</span></code> link to your desired python program. Otherwise, vim will always use <code class="docutils literal"><span class="pre">/usr/bin/python2</span></code> which links to the system&#8217;s default python.</p>
+</div>
+<div class="section" id="postinstallation">
+<h2>Postinstallation<a class="headerlink" href="#postinstallation" title="Permalink to this headline">¶</a></h2>
+<p>Unmask your original pythonlib</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo mv libpython2.7.so.back libpython2.7.so
+sudo mv libpython2.7.so.1.0.back libpython2.7.so.1.0
+</pre></div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://dpinte.wordpress.com/2011/01/02/building-macvim-with-full-python-epd-support/">Building MacVim with full python EPD support</a></li>
+<li><a class="reference external" href="http://homepages.see.leeds.ac.uk/~eeaol/notes/2012/10/vim-python-mode/">A very boring note: setting up python-mode in Vim</a></li>
+<li><a class="reference external" href="http://www.psteiner.com/2013/03/ultisnips-requires-multibyte-support.html">UltiSnips requires multibyte support enabled in Vim</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Build Vim With Custom Python (e.g. EPD) Support</a><ul>
+<li><a class="reference internal" href="#preinstallation">Preinstallation</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#postinstallation">Postinstallation</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="vim_cheatsheet.html"
+                        title="previous chapter">Vim 常用命令与快捷键</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="vim_runtime.html"
+                        title="next chapter">VIMRUNTIME 规则</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/vim/vim_custom_python.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="vim_runtime.html" title="VIMRUNTIME 规则"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="vim_cheatsheet.html" title="Vim 常用命令与快捷键"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../vim.html" >Vim</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2013, MindonMind.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Linux 下的网络管理工具 &mdash; MindonTech 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MindonTech 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="linux 远程传送文件" href="linux_scp.html" />
+    <link rel="prev" title="Linux 动态库查找与链接相关知识" href="ld_order.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="linux_scp.html" title="linux 远程传送文件"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ld_order.html" title="Linux 动态库查找与链接相关知识"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="linux">
+<h1>Linux 下的网络管理工具<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>图形化管理工具<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>NetworkManager, nm-applet</li>
+<li>Wcid</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>命令行<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>ifconfig</li>
+<li>无线：iwconfig, iwlist</li>
+</ol>
+<p>如下命令可以通过命令行设置无线网络:</p>
+<div class="highlight-python"><div class="highlight"><pre>su -
+ifconfig eth1 up
+iwconfig eth1 essid &quot;teset&quot; key xxxxxxxx
+dhclient eth1
+</pre></div>
+</div>
+<p>使用 <code class="docutils literal"><span class="pre">iwlist</span></code> 可以查询更多无线信息，如:</p>
+<div class="highlight-python"><div class="highlight"><pre>su -
+iwlist eth1 scan
+</pre></div>
+</div>
+<p>参考
+&#8212;</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://www.techrepublic.com/blog/australia/fixing-fedoras-wi-fi-with-wicd/463">Fixing Fedora&#8217;s Wi-Fi with Wicd</a></li>
+<li><a class="reference external" href="http://www.linux.com/learn/tutorials/374514-control-wireless-on-the-linux-desktop-with-these-tools">How to Configure Wireless on Any Linux Desktop</a></li>
+<li><a class="reference external" href="http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_:_Ch13_:_Linux_Wireless_Networking">Quick HOWTO: Ch13 : Linux Wireless Networking</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Linux 下的网络管理工具</a><ul>
+<li><a class="reference internal" href="#id1">图形化管理工具</a></li>
+<li><a class="reference internal" href="#id2">命令行</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ld_order.html"
+                        title="previous chapter">Linux 动态库查找与链接相关知识</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="linux_scp.html"
+                        title="next chapter">linux 远程传送文件</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/linux/linux_network.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="linux_scp.html" title="linux 远程传送文件"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ld_order.html" title="Linux 动态库查找与链接相关知识"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2013, MindonMind.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

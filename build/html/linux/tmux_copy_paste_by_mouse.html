@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>Tmux 中使用鼠标选择复制与粘贴 &mdash; MindonTech 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MindonTech 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="解决 Tmux 中 manpage 无法搜索高亮" href="tmux_highlight_man.html" />
+    <link rel="prev" title="解决Unknown Terminal问题" href="terminfo.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tmux_highlight_man.html" title="解决 Tmux 中 manpage 无法搜索高亮"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="terminfo.html" title="解决Unknown Terminal问题"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tmux">
+<h1>Tmux 中使用鼠标选择复制与粘贴<a class="headerlink" href="#tmux" title="Permalink to this headline">¶</a></h1>
+<p>如果想将在 Tmux 中发挥鼠标的威力，最好先将下面的设置打开:</p>
+<div class="highlight-python"><div class="highlight"><pre>set -g mouse-resize-pane on
+set -g mouse-select-pane on
+set -g mouse-select-window on
+
+set -g mode-mouse on
+</pre></div>
+</div>
+<p>以上设置，将允许用鼠标选择面板、窗口，并允许手动修改面板的大小。其中最后一条命令，允许利用鼠标进入 cope-mode，可以直接在 tmux 中滚动历史，并选择文本将其复制到 tmux 的缓冲区中。当想要在其他面板或窗口中复制这段文本时，只需要使用复制命令 <code class="docutils literal"><span class="pre">bindkey</span> <span class="pre">p</span></code> 即可。这样，基本上 Tmux 内部的复制粘贴就都可以搞定。</p>
+<p>对于一个经常使用 Unix/Linux 系统的用户来说，肯定非常怀念传统的左键选择文本，中键复制文本的操作模式。但在以上设置下，会发现无法用中键向 tmux 中复制文本，也无法将 tmux 中选择好的文本中键复制到系统其他应用程序中。</p>
+<p>这里有一个 trick，那就是在 tmux 中不论选择还是复制时，都按住 <code class="docutils literal"><span class="pre">Shift</span></code> 键，你会发现熟悉的中键又回来了 :-)
+此外，还可以使用 <code class="docutils literal"><span class="pre">Shift+Insert</span></code> 快捷键将系统剪切板中的内容输入 tmux 中。
+相对于 tmux 原生的选择模式（不加 <code class="docutils literal"><span class="pre">shift</span></code> 键），使用系统选择有个缺陷，即当一行内存在多个面板时，无法选择单个面板中的内容，这时就必须使用 tmux 自带的复制粘贴系统了。</p>
+<p>参考：</p>
+<p><a class="reference external" href="http://awhan.wordpress.com/2012/04/18/tmux-copy-paste-with-mouse/">http://awhan.wordpress.com/2012/04/18/tmux-copy-paste-with-mouse/</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="terminfo.html"
+                        title="previous chapter">解决Unknown Terminal问题</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tmux_highlight_man.html"
+                        title="next chapter">解决 Tmux 中 manpage 无法搜索高亮</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/linux/tmux_copy_paste_by_mouse.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tmux_highlight_man.html" title="解决 Tmux 中 manpage 无法搜索高亮"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="terminfo.html" title="解决Unknown Terminal问题"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2013, MindonMind.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

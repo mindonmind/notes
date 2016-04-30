@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>我的 urxvt 配置文件 &mdash; MindonTech 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MindonTech 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="urxvt 快捷键" href="urxvt_shortkeys.html" />
+    <link rel="prev" title="解决Fedora下urxvt256c中ls显示不正常的问题" href="urxvt256c-ls-problem.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="urxvt_shortkeys.html" title="urxvt 快捷键"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="urxvt256c-ls-problem.html" title="解决Fedora下urxvt256c中ls显示不正常的问题"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="urxvt">
+<h1>我的 urxvt 配置文件<a class="headerlink" href="#urxvt" title="Permalink to this headline">¶</a></h1>
+<p>如下:</p>
+<div class="highlight-python"><div class="highlight"><pre>! General
+URxvt.termNmae: rxvt-unicode-256color
+URxvt.borderLess:False
+URxvt.cursorBlink:False
+URxvt.saveLines:65536
+URxvt.scrollBar:True
+URxvt.scrollBar_right:True
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+URxvt.iconFile: /usr/share/icons/gnome/16x16/apps/terminal.png
+
+! URxvt shortkeys
+!URxvt.keysym.F11: perl:fullscreen:switch
+
+! Extensions
+!!!!No white space between extension names
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 1
+
+! Input Method
+URxvt.preeditType:OffTheSpot
+URxvt.inputMethod:fcitx
+
+! Fonts
+URxvt.font: xft:Bitstream Vera Sans Mono:size=10:atialias=true:hinting=true,xft:文泉驿等宽微米黑:size=10
+URxvt.boldfont: xft:Bitstream Vera Sans Mono:bold:size=10:atialias=true:hinting=true, xft:文泉驿等宽微米黑:style=BOld:size=10
+
+! Colorscheme: Solarized light
+URxvt.depth:32
+URxvt.background:            #fdf7e3
+URxvt.foreground:            #657b83
+URxvt.fading:                40
+URxvt.fadeColor:             #fdf6e3
+URxvt.cursorColor:           #586e75
+URxvt.pointerColorBackground:#93a1a1
+URxvt.pointerColorForeground:#586e75
+!! black dark/light
+URxvt.color0:                #073642
+URxvt.color8:                #002b36
+!! red dark/light
+URxvt.color1:                #dc322f
+URxvt.color9:                #cb4b16
+!! green dark/light
+URxvt.color2:                #859900
+URxvt.color10:               #586e75
+!! yellow dark/light
+URxvt.color3:                #b58900
+URxvt.color11:               #657b83
+!! blue dark/light
+URxvt.color4:                #268bd2
+URxvt.color12:               #839496
+!! magenta dark/light
+URxvt.color5:                #d33682
+URxvt.color13:               #6c71c4
+!! cyan dark/light
+URxvt.color6:                #2aa198
+URxvt.color14:               #93a1a1
+!! white dark/light
+URxvt.color7:                #eee8d5
+URxvt.color15:               #fdf6e3
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h2>参考<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://linux.die.net/man/1/urxvt">urxvt man page</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Urxvt#Scrollwheel_Support">urxvt in arch wiki</a></li>
+<li><a class="reference external" href="http://awesome.naquadah.org/wiki/Urxvt">urxvt in awesome wiki</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">我的 urxvt 配置文件</a><ul>
+<li><a class="reference internal" href="#id1">参考</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="urxvt256c-ls-problem.html"
+                        title="previous chapter">解决Fedora下urxvt256c中ls显示不正常的问题</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="urxvt_shortkeys.html"
+                        title="next chapter">urxvt 快捷键</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/linux/urxvt_configuration.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="urxvt_shortkeys.html" title="urxvt 快捷键"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="urxvt256c-ls-problem.html" title="解决Fedora下urxvt256c中ls显示不正常的问题"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2013, MindonMind.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

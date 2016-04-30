@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-38743704-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <title>解决 Tmux 中 manpage 无法搜索高亮 &mdash; MindonTech 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="MindonTech 0.0.1 documentation" href="../index.html" />
+    <link rel="up" title="linux" href="../linux.html" />
+    <link rel="next" title="Tmux 使用笔记" href="tmux.html" />
+    <link rel="prev" title="Tmux 中使用鼠标选择复制与粘贴" href="tmux_copy_paste_by_mouse.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tmux.html" title="Tmux 使用笔记"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tmux_copy_paste_by_mouse.html" title="Tmux 中使用鼠标选择复制与粘贴"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" accesskey="U">linux</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tmux-manpage">
+<h1>解决 Tmux 中 manpage 无法搜索高亮<a class="headerlink" href="#tmux-manpage" title="Permalink to this headline">¶</a></h1>
+<p>在Tmux中使用manpage时发现在搜索某个关键词后并不会高亮显示，很是不方便，解决方案如下:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ mkdir $HOME/.terminfo/
+$ screen_terminfo=&quot;screen-256color&quot;
+$ infocmp &quot;$screen_terminfo&quot; | sed \
+  -e &#39;s/^screen[^|]*|[^,]*,/screen-it|screen with italics support,/&#39; \
+  -e &#39;s/%?%p1%t;3%/%?%p1%t;7%/&#39; \
+  -e &#39;s/smso=[^,]*,/smso=\\E[7m,/&#39; \
+  -e &#39;s/rmso=[^,]*,/rmso=\\E[27m,/&#39; \
+  -e &#39;$s/$/ sitm=\\E[3m, ritm=\\E[23m,/&#39; &gt; /tmp/screen.terminfo
+$ tic /tmp/screen.terminfo
+</pre></div>
+</div>
+<p>之后在 .tmux.conf 中加入:</p>
+<div class="highlight-python"><div class="highlight"><pre>set -g default-terminal &quot;screen-it&quot;
+</pre></div>
+</div>
+<p>参考：</p>
+<p><a class="reference external" href="http://tmux.git.sourceforge.net/git/gitweb.cgi?p=tmux/tmux;a=blob;f=FAQ">http://tmux.git.sourceforge.net/git/gitweb.cgi?p=tmux/tmux;a=blob;f=FAQ</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tmux_copy_paste_by_mouse.html"
+                        title="previous chapter">Tmux 中使用鼠标选择复制与粘贴</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tmux.html"
+                        title="next chapter">Tmux 使用笔记</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/linux/tmux_highlight_man.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tmux.html" title="Tmux 使用笔记"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tmux_copy_paste_by_mouse.html" title="Tmux 中使用鼠标选择复制与粘贴"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">MindonTech 0.0.1 documentation</a> &raquo;</li>
+          <li class="nav-item nav-item-1"><a href="../linux.html" >linux</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2013, MindonMind.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
