@@ -24,6 +24,10 @@ Unimpaired Cheatsheet
 +----------+--------------------------------------------+
 | ]l       | next location (location list)              |
 +----------+--------------------------------------------+
+| [n       | previous conflict marker (such as git's)   |
++----------+--------------------------------------------+
+| ]n       | next conflict marker (such as git's)       |
++----------+--------------------------------------------+
 | [q       | previous error (quickfix list)             |
 +----------+--------------------------------------------+
 | ]q       | next error (quickfix list)                 |
